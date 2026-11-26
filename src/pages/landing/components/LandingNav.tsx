@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ArrowUpRight, Menu, Moon, Sun, X } from 'lucide-react';
-import { ArcCrossLogo } from '../../../components/common/ArcCrossLogo';
+import { ArcCrossLogo } from './ArcCrossLogo';
 import { useLandingTheme } from '../LandingThemeContext';
 
 const NAV_ITEMS = [
@@ -124,9 +123,9 @@ export const LandingNav: React.FC = () => {
             </AnimatePresence>
           </button>
 
-          <Link to="/app" className="ac-nav-cta">
+          <a href="#get-started" className="ac-nav-cta">
             Open ArcCross
-          </Link>
+          </a>
 
           <button
             type="button"
@@ -176,14 +175,14 @@ export const LandingNav: React.FC = () => {
               </a>
             ))}
             <div style={{ paddingTop: 14 }}>
-              <Link
-                to="/app"
+              <a
+                href="#get-started"
                 className="ac-btn-primary"
                 style={{ width: '100%' }}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Open ArcCross
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}

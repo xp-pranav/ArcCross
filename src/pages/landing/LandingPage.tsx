@@ -55,7 +55,7 @@ const LandingContent: React.FC = () => {
 };
 
 export const LandingPage: React.FC = () => {
-  // Ensure root scrolling and sticky storytelling work cleanly while preserving globals.css for /app
+  // Ensure root document supports full-height sticky scroll storytelling
   useEffect(() => {
     const html = document.documentElement;
     const body = document.body;

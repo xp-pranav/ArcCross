@@ -21,7 +21,7 @@ npm run dev
 
 ```text
 ArcCross/
-├── index.html                  # Application HTML entry point
+├── index.html                  # Landing page HTML entry point
 ├── package.json                # Dependencies and npm scripts
 ├── tsconfig.json               # TypeScript compiler configuration
 ├── vite.config.ts              # Vite bundler configuration
@@ -31,23 +31,17 @@ ArcCross/
 │   ├── planning/               # Roadmaps, team plans, beginner guide, and CSV backlogs
 │   └── research/               # Competitive research brief
 └── src/
-    ├── App.tsx                 # Route configuration (/ and /app/*)
+    ├── App.tsx                 # Root entry rendering the public landing page
     ├── main.tsx                # React root mount
-    ├── context/                # Application state context (AppContext)
-    ├── data/                   # Mock devices and transfer fixtures
-    ├── types/                  # Shared TypeScript interfaces
-    ├── styles/                 # Design tokens, app globals, and scoped landing CSS
-    ├── components/             # Shared UI primitives, modals, and app shell chrome
+    ├── styles/
+    │   └── landing.css         # Liquid Glass, dark/light theme, and motion styles
     └── pages/
-        ├── landing/            # Public landing page (/)
-        │   ├── LandingPage.tsx
-        │   ├── components/     # Navigation, hardware mockups, and interactive feature cards
-        │   └── sections/       # Hero, statement, carousel, scroll experience, steps, privacy, CTA, footer
-        └── app/                # Interactive workspace routes (/app/*)
-            ├── DevicesPage.tsx
-            ├── TransfersPage.tsx
-            ├── SettingsPage.tsx
-            └── WelcomePage.tsx
+        └── landing/            # Public landing page (/)
+            ├── LandingPage.tsx
+            ├── LandingThemeContext.tsx
+            ├── index.ts
+            ├── components/     # Logo, navigation, hardware mockups, glass card, and feature cards
+            └── sections/       # Hero, statement, carousel, scroll experience, steps, privacy, CTA, footer
 ```
 
 ## Documentation

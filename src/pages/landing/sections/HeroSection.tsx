@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import {
   motion,
   useMotionValue,
@@ -806,9 +805,9 @@ export const HeroSection: React.FC = () => {
           </p>
 
           <div className="ac-hero-actions">
-            <Link to="/app" className="ac-btn-primary">
+            <a href="#features" className="ac-btn-primary">
               Explore ArcCross
-            </Link>
+            </a>
             <a href="#how-it-works" className="ac-btn-secondary">
               <span>Discover how it works</span>
               <ChevronDown size={16} />

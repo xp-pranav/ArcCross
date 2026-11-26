@@ -1,10 +1,11 @@
 /* ArcCross Landing Page — High-Definition Liquid Glass, Dark Mode & Fluid Motion */
-/* Strictly scoped under .landing-page-root so /app routes and globals remain untouched */
 
-html:has(.landing-page-root),
-body:has(.landing-page-root) {
+html,
+body {
   height: auto;
   min-height: 100%;
+  margin: 0;
+  padding: 0;
   overflow-x: clip;
   overflow-y: visible;
   scroll-behavior: smooth;
@@ -112,6 +113,8 @@ body:has(.landing-page-root) {
 .landing-page-root *::before,
 .landing-page-root *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .landing-page-root h1,

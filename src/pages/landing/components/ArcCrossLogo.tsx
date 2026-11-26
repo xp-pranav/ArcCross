@@ -33,7 +33,6 @@ export const ArcCrossLogo: React.FC<LogoProps> = ({
         xmlns="http://www.w3.org/2000/svg"
         style={{ flexShrink: 0 }}
       >
-        {/* Outer Orbit Ring */}
         <circle
           cx="20"
           cy="20"
@@ -43,24 +42,18 @@ export const ArcCrossLogo: React.FC<LogoProps> = ({
           strokeDasharray="6 4"
           opacity="0.8"
         />
-
-        {/* Primary Arc (Deep Blue / Left Orbit) */}
         <path
           d="M8 24C7 16 13 8 21 8C27 8 32 12 33 18"
           stroke={isMonochrome ? 'currentColor' : 'var(--color-deep-blue)'}
           strokeWidth="3.2"
           strokeLinecap="round"
         />
-
-        {/* Cross Arc (Teal / Right Orbit) */}
         <path
           d="M32 16C33 24 27 32 19 32C13 32 8 28 7 22"
           stroke={isMonochrome ? 'currentColor' : 'var(--color-teal)'}
           strokeWidth="3.2"
           strokeLinecap="round"
         />
-
-        {/* Core Synchronization Node */}
         <circle cx="20" cy="20" r="4.5" fill={isMonochrome ? 'currentColor' : 'var(--color-teal)'} />
         <circle cx="20" cy="20" r="2" fill="var(--color-canvas)" />
       </svg>

@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { ArcCrossLogo } from '../../../components/common/ArcCrossLogo';
+import { ArcCrossLogo } from '../components/ArcCrossLogo';
 import { useLandingTheme } from '../LandingThemeContext';
 
 export const FooterSection: React.FC = () => {
@@ -19,16 +18,12 @@ export const FooterSection: React.FC = () => {
             <a href="#features" className="ac-footer-link">
               Features
             </a>
+            <a href="#how-it-works" className="ac-footer-link">
+              How it works
+            </a>
             <a href="#privacy" className="ac-footer-link">
               Privacy
             </a>
-            <Link
-              to="/app"
-              className="ac-footer-link"
-              style={{ color: isDark ? '#60B2FF' : '#0071E3', fontWeight: 500 }}
-            >
-              Open App
-            </Link>
           </nav>
         </div>
 

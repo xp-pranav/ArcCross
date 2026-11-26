@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'motion/react';
 import { Laptop, ShieldCheck, Smartphone, Wifi } from 'lucide-react';
 import { LiquidGlassCard } from '../components';
@@ -43,9 +42,9 @@ export const FinalCTASection: React.FC = () => {
             </p>
 
             <div style={{ marginTop: 30 }}>
-              <Link to="/app" className="ac-btn-primary">
-                Open ArcCross
-              </Link>
+              <a href="#features" className="ac-btn-primary">
+                Explore ArcCross
+              </a>
             </div>
 
             <div className="ac-cta-ecosystem-pills" aria-hidden="true">
