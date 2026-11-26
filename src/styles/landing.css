@@ -1,0 +1,2679 @@
+/* ArcCross Landing Page — High-Definition Liquid Glass, Dark Mode & Fluid Motion */
+/* Strictly scoped under .landing-page-root so /app routes and globals remain untouched */
+
+html:has(.landing-page-root),
+body:has(.landing-page-root) {
+  height: auto;
+  min-height: 100%;
+  overflow-x: clip;
+  overflow-y: visible;
+  scroll-behavior: smooth;
+}
+
+.landing-page-root {
+  /* Light Theme Tokens */
+  --ac-bg-primary: #FFFFFF;
+  --ac-bg-secondary: #EEF3FA;
+  --ac-text-primary: #1D1D1F;
+  --ac-text-secondary: #48484D;
+  --ac-text-tertiary: #6E6E73;
+  --ac-border: rgba(0, 0, 0, 0.1);
+  --ac-border-subtle: rgba(0, 0, 0, 0.08);
+  --ac-dark-bg: #000000;
+  --ac-dark-text: #F5F5F7;
+  --ac-blue: #0071E3;
+  --ac-blue-hover: #0077ED;
+  --ac-teal: #30B8A6;
+  --ac-teal-deep: #1D7F72;
+
+  /* True Optical Liquid Glass Material Tokens (Light) */
+  --ac-glass-bg: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.54) 0%,
+    rgba(255, 255, 255, 0.34) 50%,
+    rgba(232, 245, 255, 0.44) 100%
+  );
+  --ac-glass-bg-dark: linear-gradient(
+    145deg,
+    rgba(40, 48, 64, 0.5) 0%,
+    rgba(18, 22, 30, 0.42) 55%,
+    rgba(14, 34, 38, 0.48) 100%
+  );
+  --ac-glass-blur: saturate(230%) blur(28px);
+  --ac-glass-blur-heavy: saturate(240%) blur(34px);
+  --ac-glass-shadow:
+    0 20px 50px rgba(12, 36, 72, 0.11),
+    0 4px 12px rgba(0, 0, 0, 0.05),
+    inset 0 2px 1px rgba(255, 255, 255, 0.98),
+    inset 0 -2px 3px rgba(0, 113, 227, 0.16),
+    inset 1.5px 0 1px rgba(255, 255, 255, 0.78),
+    inset -1px 0 2px rgba(48, 184, 166, 0.12);
+  --ac-glass-shadow-dark:
+    0 24px 60px rgba(0, 0, 0, 0.68),
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.34),
+    inset 0 -2px 4px rgba(48, 184, 166, 0.22),
+    inset 1.5px 0 1px rgba(255, 255, 255, 0.18),
+    inset -1px 0 2px rgba(0, 113, 227, 0.18);
+
+  /* Inherited component overrides (e.g. ArcCrossLogo) */
+  --color-canvas: #FFFFFF;
+  --color-surface: #FFFFFF;
+  --color-text-primary: #1D1D1F;
+  --color-text-secondary: #48484D;
+  --color-text-tertiary: #6E6E73;
+  --color-text-muted: #6E6E73;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-deep-blue: #0071E3;
+  --color-teal: #30B8A6;
+
+  /* Typography & Motion */
+  --ac-font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
+  --ac-font-text: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", system-ui, sans-serif;
+  --ac-font-mono: "SF Mono", "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --ac-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ac-ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ac-nav-height: 58px;
+  --ac-max-width: 1140px;
+
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--ac-bg-primary);
+  color: var(--ac-text-primary);
+  font-family: var(--ac-font-text);
+  font-size: 17px;
+  line-height: 1.47059;
+  letter-spacing: -0.016em;
+  overflow-x: clip;
+  position: relative;
+  transition: background-color 320ms ease, color 280ms ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Full Dark Mode Token Overrides */
+.landing-page-root[data-landing-theme="dark"] {
+  --ac-bg-primary: #06080D;
+  --ac-bg-secondary: #080C14;
+  --ac-text-primary: #F5F5F7;
+  --ac-text-secondary: #B4B8C2;
+  --ac-text-tertiary: #8E94A0;
+  --ac-border: rgba(255, 255, 255, 0.14);
+  --ac-border-subtle: rgba(255, 255, 255, 0.1);
+  --color-canvas: #06080D;
+  --color-surface: #0D111A;
+  --color-text-primary: #F5F5F7;
+  --color-text-secondary: #B4B8C2;
+  --color-text-tertiary: #8E94A0;
+  --color-text-muted: #8E94A0;
+  --color-border: rgba(255, 255, 255, 0.16);
+}
+
+.landing-page-root *,
+.landing-page-root *::before,
+.landing-page-root *::after {
+  box-sizing: border-box;
+}
+
+.landing-page-root h1,
+.landing-page-root h2,
+.landing-page-root h3,
+.landing-page-root h4,
+.landing-page-root p {
+  font-family: var(--ac-font-display);
+}
+
+.landing-page-root a:focus-visible,
+.landing-page-root button:focus-visible {
+  outline: 2px solid var(--ac-blue);
+  outline-offset: 2px;
+}
+
+.ac-container {
+  width: 100%;
+  max-width: var(--ac-max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   Optical Liquid Glass Surfaces (Diagonal Glaze + Specular Lens Rim + Cursor Sheen)
+   ========================================================================== */
+.ac-glass {
+  position: relative;
+  background: var(--ac-glass-bg);
+  backdrop-filter: var(--ac-glass-blur);
+  -webkit-backdrop-filter: var(--ac-glass-blur);
+  border: 1.5px solid rgba(255, 255, 255, 0.88);
+  outline: 1px solid rgba(0, 88, 180, 0.11);
+  box-shadow: var(--ac-glass-shadow);
+  overflow: hidden;
+}
+
+.ac-glass--dark {
+  position: relative;
+  background: var(--ac-glass-bg-dark);
+  backdrop-filter: var(--ac-glass-blur);
+  -webkit-backdrop-filter: var(--ac-glass-blur);
+  border: 1.5px solid rgba(255, 255, 255, 0.24);
+  outline: 1px solid rgba(48, 184, 166, 0.14);
+  box-shadow: var(--ac-glass-shadow-dark);
+  overflow: hidden;
+}
+
+/* Diagonal curved specular reflection across upper glass edge */
+.ac-glass::before,
+.ac-glass--dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(
+    126deg,
+    rgba(255, 255, 255, 0.44) 0%,
+    rgba(255, 255, 255, 0.12) 26%,
+    rgba(255, 255, 255, 0) 52%
+  );
+}
+
+.ac-glass--dark::before {
+  background: linear-gradient(
+    126deg,
+    rgba(255, 255, 255, 0.16) 0%,
+    rgba(255, 255, 255, 0.04) 28%,
+    transparent 52%
+  );
+}
+
+.ac-glass > *,
+.ac-glass--dark > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Cursor-reactive specular highlight */
+.ac-glass-interactive {
+  --mx: 50%;
+  --my: 0%;
+  --sheen-opacity: 0;
+}
+
+.ac-glass-interactive::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--sheen-opacity);
+  background: radial-gradient(
+    400px circle at var(--mx) var(--my),
+    rgba(255, 255, 255, 0.68) 0%,
+    rgba(195, 230, 255, 0.2) 34%,
+    transparent 66%
+  );
+  transition: opacity 260ms ease;
+  z-index: 3;
+}
+
+.ac-glass--dark.ac-glass-interactive::after {
+  background: radial-gradient(
+    420px circle at var(--mx) var(--my),
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(48, 184, 166, 0.14) 38%,
+    transparent 70%
+  );
+}
+
+.ac-glass-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 15px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.68) 0%,
+    rgba(236, 246, 255, 0.42) 100%
+  );
+  backdrop-filter: saturate(220%) blur(22px);
+  -webkit-backdrop-filter: saturate(220%) blur(22px);
+  border: 1.5px solid rgba(255, 255, 255, 0.92);
+  outline: 1px solid rgba(0, 113, 227, 0.15);
+  box-shadow:
+    0 10px 26px rgba(0, 90, 190, 0.1),
+    inset 0 2px 1px rgba(255, 255, 255, 1),
+    inset 0 -1.5px 2px rgba(0, 113, 227, 0.14);
+}
+
+[data-landing-theme="dark"] .ac-glass-pill {
+  background: linear-gradient(
+    145deg,
+    rgba(38, 46, 62, 0.62) 0%,
+    rgba(20, 26, 36, 0.5) 100%
+  );
+  border: 1.5px solid rgba(255, 255, 255, 0.24);
+  outline: 1px solid rgba(48, 184, 166, 0.22);
+  color: #F5F5F7;
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.48),
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.3),
+    inset 0 -1.5px 2px rgba(48, 184, 166, 0.22);
+}
+
+/* ==========================================================================
+   Rich Refractive Mesh Blobs (Directly behind Glass for visible Refraction)
+   ========================================================================== */
+.ac-ambient-canvas {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ac-mesh-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ac-mesh-orb--blue {
+  background: radial-gradient(
+    circle,
+    rgba(0, 113, 227, 0.28) 0%,
+    rgba(56, 163, 255, 0.16) 36%,
+    rgba(56, 163, 255, 0.04) 60%,
+    transparent 74%
+  );
+}
+
+.ac-mesh-orb--teal {
+  background: radial-gradient(
+    circle,
+    rgba(48, 184, 166, 0.28) 0%,
+    rgba(92, 225, 208, 0.16) 38%,
+    rgba(92, 225, 208, 0.04) 62%,
+    transparent 75%
+  );
+}
+
+.ac-mesh-orb--ice {
+  background: radial-gradient(
+    circle,
+    rgba(116, 188, 250, 0.34) 0%,
+    rgba(170, 232, 224, 0.18) 44%,
+    transparent 76%
+  );
+}
+
+[data-landing-theme="dark"] .ac-mesh-orb--blue {
+  background: radial-gradient(
+    circle,
+    rgba(0, 128, 255, 0.34) 0%,
+    rgba(20, 100, 210, 0.16) 42%,
+    transparent 74%
+  );
+}
+
+[data-landing-theme="dark"] .ac-mesh-orb--teal {
+  background: radial-gradient(
+    circle,
+    rgba(48, 184, 166, 0.32) 0%,
+    rgba(24, 130, 120, 0.15) 42%,
+    transparent 74%
+  );
+}
+
+/* ==========================================================================
+   Section 01 — Floating Liquid Glass Navigation + Dark Mode Toggle
+   ========================================================================== */
+.ac-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--ac-nav-height);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  padding: 0 16px;
+  transition:
+    padding-top 360ms var(--ac-ease-out),
+    color 240ms var(--ac-ease-out);
+}
+
+.ac-nav--scrolled {
+  padding-top: 10px;
+  height: auto;
+}
+
+.ac-nav-inner {
+  pointer-events: auto;
+  width: 100%;
+  max-width: var(--ac-max-width);
+  height: 52px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-radius: 0;
+  border: 1px solid transparent;
+  background: transparent;
+  transition:
+    max-width 380ms var(--ac-ease-out),
+    height 340ms var(--ac-ease-out),
+    padding 340ms var(--ac-ease-out),
+    border-radius 340ms var(--ac-ease-out),
+    background-color 280ms var(--ac-ease-out),
+    border-color 280ms var(--ac-ease-out),
+    box-shadow 340ms var(--ac-ease-out);
+}
+
+/* Pronounced Liquid Glass floating capsule when scrolled */
+.ac-nav--scrolled .ac-nav-inner {
+  max-width: 820px;
+  height: 48px;
+  padding: 0 10px 0 18px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(238, 246, 255, 0.44) 100%
+  );
+  backdrop-filter: saturate(240%) blur(32px);
+  -webkit-backdrop-filter: saturate(240%) blur(32px);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  outline: 1px solid rgba(0, 88, 180, 0.12);
+  box-shadow:
+    0 16px 40px rgba(12, 36, 72, 0.14),
+    0 3px 8px rgba(0, 0, 0, 0.05),
+    inset 0 2px 1px rgba(255, 255, 255, 1),
+    inset 0 -1.5px 2px rgba(0, 113, 227, 0.15);
+}
+
+.ac-nav--dark {
+  color: #F5F5F7;
+  --color-text-primary: #F5F5F7;
+  --color-canvas: #000000;
+  --color-border: rgba(255, 255, 255, 0.2);
+}
+
+.ac-nav--dark .ac-nav-inner {
+  background: linear-gradient(
+    180deg,
+    rgba(38, 44, 56, 0.56) 0%,
+    rgba(16, 20, 28, 0.48) 100%
+  );
+  backdrop-filter: saturate(240%) blur(32px);
+  -webkit-backdrop-filter: saturate(240%) blur(32px);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  outline: 1px solid rgba(48, 184, 166, 0.14);
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.65),
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.34),
+    inset 0 -1.5px 2px rgba(48, 184, 166, 0.2);
+}
+
+/* At scrollY=0 in full dark mode, keep top bar sleek without boxy edge until scrolled */
+.landing-page-root[data-landing-theme="dark"] .ac-nav:not(.ac-nav--scrolled) .ac-nav-inner {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-color: transparent;
+  outline-color: transparent;
+  box-shadow: none;
+}
+
+.ac-nav-brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  flex-shrink: 0;
+  transition: transform 140ms var(--ac-ease-out);
+}
+
+.ac-nav-brand:active {
+  transform: scale(0.97);
+}
+
+.ac-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ac-nav-link {
+  position: relative;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ac-text-primary);
+  opacity: 0.78;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  transition: opacity 160ms ease, color 160ms ease;
+  z-index: 1;
+}
+
+.ac-nav--dark .ac-nav-link {
+  color: #F5F5F7;
+}
+
+.ac-nav-link:hover,
+.ac-nav-link--active {
+  opacity: 1;
+}
+
+.ac-nav-link-pill {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 3px 10px rgba(0, 60, 140, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  z-index: -1;
+}
+
+.ac-nav--dark .ac-nav-link-pill {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.ac-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Tactile Liquid Glass Dark Mode Toggle Button */
+.ac-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.88);
+  outline: 1px solid rgba(0, 88, 180, 0.12);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.68) 0%, rgba(235, 245, 255, 0.45) 100%);
+  backdrop-filter: saturate(200%) blur(18px);
+  -webkit-backdrop-filter: saturate(200%) blur(18px);
+  color: #1D1D1F;
+  cursor: pointer;
+  box-shadow:
+    0 4px 12px rgba(15, 35, 65, 0.08),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.98);
+  transition: transform 140ms var(--ac-ease-out), background-color 200ms ease, color 200ms ease;
+}
+
+.ac-theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.ac-theme-toggle:active {
+  transform: scale(0.92);
+}
+
+.ac-nav--dark .ac-theme-toggle {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.08) 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.26);
+  outline: none;
+  color: #F5F5F7;
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.4),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.3);
+}
+
+.ac-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 15px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #1682EE 0%, #006AD6 100%);
+  color: #FFFFFF;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  box-shadow:
+    0 4px 12px rgba(0, 113, 227, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  transition:
+    transform 140ms var(--ac-ease-out),
+    box-shadow 180ms ease;
+  white-space: nowrap;
+}
+
+.ac-nav-cta:hover {
+  box-shadow:
+    0 8px 20px rgba(0, 113, 227, 0.36),
+    inset 0 1px 0 rgba(255, 255, 255, 0.52);
+}
+
+.ac-nav-cta:active {
+  transform: scale(0.96);
+}
+
+.ac-nav-mobile-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.88);
+  outline: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  color: var(--ac-text-primary);
+  cursor: pointer;
+  transition: transform 140ms var(--ac-ease-out), background-color 160ms ease;
+}
+
+.ac-nav-mobile-toggle:active {
+  transform: scale(0.94);
+}
+
+.ac-nav--dark .ac-nav-mobile-toggle {
+  color: #F5F5F7;
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.24);
+  outline: none;
+}
+
+.ac-nav-drawer {
+  pointer-events: auto;
+  position: fixed;
+  top: 66px;
+  left: 16px;
+  right: 16px;
+  border-radius: 26px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.78) 0%,
+    rgba(240, 248, 255, 0.68) 100%
+  );
+  backdrop-filter: saturate(240%) blur(32px);
+  -webkit-backdrop-filter: saturate(240%) blur(32px);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 24px 60px rgba(15, 35, 65, 0.18),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.98);
+  padding: 16px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 999;
+  transform-origin: top center;
+}
+
+.ac-nav--dark .ac-nav-drawer {
+  background: linear-gradient(
+    180deg,
+    rgba(30, 34, 44, 0.82) 0%,
+    rgba(16, 18, 24, 0.78) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.24);
+  box-shadow:
+    0 26px 64px rgba(0, 0, 0, 0.78),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.28);
+}
+
+.ac-nav-drawer-link {
+  padding: 13px 6px;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ac-text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ac-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ac-nav--dark .ac-nav-drawer-link {
+  color: #F5F5F7;
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+/* ==========================================================================
+   Shared Editorial Typography & Buttons
+   ========================================================================== */
+.ac-hero-headline {
+  font-size: clamp(42px, 6vw, 90px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.038em;
+  color: var(--ac-text-primary);
+  font-optical-sizing: auto;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ac-stagger-line {
+  display: block;
+}
+
+.ac-stagger-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.06em;
+  margin-bottom: -0.06em;
+}
+
+.ac-stagger-word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.ac-section-headline {
+  font-size: clamp(36px, 5.2vw, 74px);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.034em;
+  color: var(--ac-text-primary);
+  font-optical-sizing: auto;
+}
+
+.ac-feature-heading {
+  font-size: clamp(26px, 2.8vw, 40px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.026em;
+  color: var(--ac-text-primary);
+}
+
+.ac-intro-copy {
+  font-size: clamp(17.5px, 1.48vw, 21px);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  color: var(--ac-text-secondary);
+}
+
+.ac-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 26px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #1682EE 0%, #006AD6 100%);
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow:
+    0 8px 22px rgba(0, 113, 227, 0.26),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.4);
+  transition:
+    transform 140ms var(--ac-ease-out),
+    box-shadow 180ms ease;
+}
+
+.ac-btn-primary:hover {
+  box-shadow:
+    0 12px 30px rgba(0, 113, 227, 0.36),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.48);
+}
+
+.ac-btn-primary:active {
+  transform: scale(0.96);
+}
+
+.ac-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 48px;
+  padding: 0 22px;
+  border-radius: 9999px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.68) 0%, rgba(235, 245, 255, 0.44) 100%);
+  backdrop-filter: saturate(220%) blur(22px);
+  -webkit-backdrop-filter: saturate(220%) blur(22px);
+  color: var(--ac-blue);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  outline: 1px solid rgba(0, 113, 227, 0.24);
+  box-shadow:
+    0 8px 22px rgba(0, 80, 180, 0.08),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.98);
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    transform 140ms var(--ac-ease-out),
+    box-shadow 180ms ease;
+}
+
+.ac-btn-secondary:hover {
+  box-shadow:
+    0 10px 26px rgba(0, 113, 227, 0.16),
+    inset 0 1.5px 0 rgba(255, 255, 255, 1);
+}
+
+.ac-btn-secondary:active {
+  transform: scale(0.96);
+}
+
+[data-landing-theme="dark"] .ac-btn-secondary {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.06) 100%);
+  color: #60B2FF;
+  border: 1.5px solid rgba(255, 255, 255, 0.24);
+  outline: 1px solid rgba(96, 178, 255, 0.22);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.45),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* ==========================================================================
+   Section 02 — Atmospheric Spatial Hero & Interactive Playground
+   ========================================================================== */
+.ac-hero-section {
+  background: linear-gradient(180deg, #EAF2FC 0%, #F4F8FD 54%, #FFFFFF 100%);
+  padding-top: calc(var(--ac-nav-height) + 28px);
+  padding-bottom: 72px;
+  position: relative;
+  transition: background 320ms ease;
+}
+
+[data-landing-theme="dark"] .ac-hero-section {
+  background: linear-gradient(180deg, #070B14 0%, #060910 56%, #06080D 100%);
+}
+
+.ac-hero-eyebrow-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.ac-hero-stage {
+  margin: 22px auto 24px;
+  max-width: 1060px;
+  perspective: 1800px;
+  position: relative;
+}
+
+/* Rich refractive stage backdrop behind hardware so overlapping Liquid Glass cards pop */
+.ac-hero-stage-plate {
+  position: absolute;
+  inset: 14px 3% 24px;
+  border-radius: 36px;
+  background:
+    radial-gradient(ellipse 68% 68% at 24% 44%, rgba(0, 113, 227, 0.26) 0%, transparent 62%),
+    radial-gradient(ellipse 64% 66% at 78% 58%, rgba(48, 184, 166, 0.26) 0%, transparent 64%),
+    linear-gradient(135deg, rgba(212, 234, 255, 0.65) 0%, rgba(214, 245, 240, 0.6) 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.88);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.98),
+    0 24px 60px rgba(15, 45, 90, 0.08);
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-landing-theme="dark"] .ac-hero-stage-plate {
+  background:
+    radial-gradient(ellipse 68% 68% at 24% 44%, rgba(0, 128, 255, 0.28) 0%, transparent 64%),
+    radial-gradient(ellipse 64% 66% at 78% 58%, rgba(48, 184, 166, 0.26) 0%, transparent 66%),
+    linear-gradient(135deg, rgba(20, 30, 48, 0.72) 0%, rgba(14, 28, 34, 0.68) 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.22),
+    0 26px 70px rgba(0, 0, 0, 0.65);
+}
+
+.ac-hero-laptop-screen {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(0, 113, 227, 0.26) 0%, transparent 48%),
+    radial-gradient(circle at 86% 82%, rgba(48, 184, 166, 0.28) 0%, transparent 50%),
+    linear-gradient(155deg, #E3EFFC 0%, #DFF3EF 55%, #EAF0FA 100%);
+  padding: 16px 18px 14px;
+}
+
+[data-landing-theme="dark"] .ac-hero-laptop-screen {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(0, 128, 255, 0.24) 0%, transparent 50%),
+    radial-gradient(circle at 86% 82%, rgba(48, 184, 166, 0.24) 0%, transparent 52%),
+    linear-gradient(155deg, #0E1522 0%, #0A161A 55%, #0D1119 100%);
+}
+
+.ac-hero-laptop-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.ac-hero-laptop-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.56);
+  backdrop-filter: saturate(200%) blur(14px);
+  -webkit-backdrop-filter: saturate(200%) blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.98);
+  color: #1D7F72;
+  font-size: 10.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+[data-landing-theme="dark"] .ac-hero-laptop-pill {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #4ADBC8;
+}
+
+.ac-hero-laptop-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 126px 1fr;
+  gap: 12px;
+  min-height: 0;
+  min-width: 0;
+}
+
+.ac-hero-laptop-transfer {
+  background: rgba(255, 255, 255, 0.48);
+  backdrop-filter: saturate(220%) blur(22px);
+  -webkit-backdrop-filter: saturate(220%) blur(22px);
+  border-radius: 14px;
+  border: 1.5px solid rgba(255, 255, 255, 0.88);
+  box-shadow:
+    0 10px 26px rgba(15, 35, 65, 0.08),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.98);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+[data-landing-theme="dark"] .ac-hero-laptop-transfer {
+  background: rgba(24, 32, 46, 0.56);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.45),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.22);
+}
+
+.ac-hero-composition {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 26px 16px 46px;
+  transform-style: preserve-3d;
+  z-index: 1;
+}
+
+/* Floating Liquid Glass HUD & Speed Cards */
+.ac-hero-floating-hud {
+  position: absolute;
+  top: 4px;
+  left: 52px;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.56) 0%, rgba(232, 245, 255, 0.36) 100%);
+  backdrop-filter: saturate(240%) blur(28px);
+  -webkit-backdrop-filter: saturate(240%) blur(28px);
+  border: 1.5px solid rgba(255, 255, 255, 0.92);
+  outline: 1px solid rgba(0, 113, 227, 0.14);
+  box-shadow: var(--ac-glass-shadow);
+  pointer-events: none;
+}
+
+.ac-hero-floating-stat {
+  position: absolute;
+  bottom: 50px;
+  left: 28px;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.56) 0%, rgba(232, 250, 247, 0.38) 100%);
+  backdrop-filter: saturate(240%) blur(28px);
+  -webkit-backdrop-filter: saturate(240%) blur(28px);
+  border: 1.5px solid rgba(255, 255, 255, 0.92);
+  outline: 1px solid rgba(48, 184, 166, 0.2);
+  box-shadow: var(--ac-glass-shadow);
+  pointer-events: none;
+}
+
+[data-landing-theme="dark"] .ac-hero-floating-hud,
+[data-landing-theme="dark"] .ac-hero-floating-stat {
+  background: var(--ac-glass-bg-dark);
+  border: 1.5px solid rgba(255, 255, 255, 0.26);
+  outline: 1px solid rgba(48, 184, 166, 0.16);
+  box-shadow: var(--ac-glass-shadow-dark);
+}
+
+/* Interactive Hero Quick-Drop Dock */
+.ac-hero-interactive-dock {
+  margin: 0 auto 26px;
+  max-width: 700px;
+  padding: 7px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.ac-hero-dock-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  color: var(--ac-text-secondary);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  z-index: 1;
+  transition: color 160ms ease, transform 130ms var(--ac-ease-out);
+}
+
+.ac-hero-dock-btn:active {
+  transform: scale(0.95);
+}
+
+.ac-hero-dock-btn--active {
+  color: #1D1D1F;
+  font-weight: 600;
+}
+
+[data-landing-theme="dark"] .ac-hero-dock-btn--active {
+  color: #F5F5F7;
+}
+
+.ac-hero-dock-pill {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(255, 255, 255, 1);
+  box-shadow:
+    0 4px 14px rgba(0, 60, 140, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  z-index: -1;
+}
+
+[data-landing-theme="dark"] .ac-hero-dock-pill {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.ac-hero-floor-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  width: 78%;
+  height: 46px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgba(15, 35, 65, 0.18) 0%, rgba(0, 0, 0, 0.04) 55%, transparent 78%);
+  filter: blur(12px);
+  pointer-events: none;
+}
+
+.ac-hero-copy-block {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ac-hero-actions {
+  margin-top: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.ac-hero-arc-desktop {
+  position: relative;
+  width: 82px;
+  height: 118px;
+  margin-left: -20px;
+  margin-right: -16px;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+.ac-hero-arc-mobile {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 44px;
+  width: 100%;
+}
+
+/* Responsive Inner Layouts */
+.ac-card-transfer-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.ac-card-stream-track {
+  width: 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.ac-card-three-col-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ac-how-pair-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: relative;
+}
+
+.ac-how-arrow-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--ac-blue);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 8px 18px rgba(0, 113, 227, 0.25);
+}
+
+.ac-privacy-devices {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.ac-privacy-beam {
+  width: 140px;
+  height: 28px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ac-privacy-beam-line {
+  width: 100%;
+  height: 1.5px;
+  background: linear-gradient(90deg, rgba(0, 113, 227, 0.35), rgba(48, 184, 166, 0.9), rgba(0, 113, 227, 0.35));
+}
+
+/* ==========================================================================
+   Realistic 3D CSS Hardware Components
+   ========================================================================== */
+.hw-laptop {
+  position: relative;
+  width: 620px;
+  max-width: 100%;
+  user-select: none;
+}
+
+.hw-laptop-lid {
+  position: relative;
+  margin: 0 auto;
+  width: 86%;
+  aspect-ratio: 16 / 10;
+  border-radius: 18px 18px 4px 4px;
+  padding: 10px 10px 12px;
+  background: linear-gradient(155deg, #2b2c30 0%, #161618 48%, #0d0d0f 100%);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.16) inset,
+    0 0 0 1px rgba(0, 0, 0, 0.25);
+  transition: background 420ms var(--ac-ease-out), box-shadow 420ms var(--ac-ease-out);
+}
+
+.hw-laptop--dark .hw-laptop-lid {
+  background: linear-gradient(155deg, #27272b 0%, #141416 60%, #09090b 100%);
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(255, 255, 255, 0.14) inset;
+}
+
+.hw-laptop--teal .hw-laptop-lid {
+  background: linear-gradient(155deg, #1b3438 0%, #0e1d20 55%, #091214 100%);
+  box-shadow:
+    0 28px 66px rgba(29, 127, 114, 0.24),
+    0 0 0 1px rgba(48, 184, 166, 0.28) inset;
+}
+
+.hw-laptop--blue .hw-laptop-lid {
+  background: linear-gradient(155deg, #1e2d44 0%, #101826 55%, #090d16 100%);
+  box-shadow:
+    0 28px 66px rgba(0, 113, 227, 0.24),
+    0 0 0 1px rgba(0, 113, 227, 0.28) inset;
+}
+
+.hw-laptop-notch {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 64px;
+  height: 11px;
+  background: #0b0b0d;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hw-laptop-cam {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #2a4a6d 0%, #0c121b 70%);
+}
+
+.hw-laptop-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #FBFBFD;
+  color: #1D1D1F;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.hw-laptop--dark .hw-laptop-screen {
+  background: #101014;
+  color: #F5F5F7;
+}
+
+.hw-laptop-glare {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(118deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.04) 36%, transparent 56%);
+  pointer-events: none;
+  z-index: 6;
+}
+
+.hw-laptop-base {
+  position: relative;
+  width: 100%;
+  height: 18px;
+  margin-top: -1px;
+  border-radius: 3px 3px 14px 14px;
+  background: linear-gradient(180deg, #e7e8ec 0%, #c8cacf 55%, #9d9fa6 100%);
+  box-shadow:
+    0 12px 24px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  transition: background 420ms var(--ac-ease-out);
+}
+
+.hw-laptop--dark .hw-laptop-base {
+  background: linear-gradient(180deg, #3a3a40 0%, #242429 65%, #16161a 100%);
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.hw-laptop--teal .hw-laptop-base {
+  background: linear-gradient(180deg, #cde2df 0%, #a5c3bf 60%, #7d9e99 100%);
+}
+
+.hw-laptop--blue .hw-laptop-base {
+  background: linear-gradient(180deg, #d0ddf0 0%, #a6bad8 60%, #7f97ba 100%);
+}
+
+.hw-laptop-lip {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 82px;
+  height: 5px;
+  border-radius: 0 0 5px 5px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+/* Android Flagship Phone Hardware */
+.hw-phone {
+  position: relative;
+  width: 210px;
+  aspect-ratio: 9 / 19.2;
+  border-radius: 34px;
+  padding: 8px;
+  background: linear-gradient(145deg, #3b3d42 0%, #1d1e22 42%, #111215 100%);
+  box-shadow:
+    0 28px 64px rgba(0, 0, 0, 0.22),
+    0 6px 16px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.22) inset;
+  user-select: none;
+  transition: background 420ms var(--ac-ease-out), box-shadow 420ms var(--ac-ease-out);
+}
+
+.hw-phone--dark {
+  background: linear-gradient(145deg, #2e2f34 0%, #16171a 55%, #09090b 100%);
+  box-shadow:
+    0 32px 72px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.18) inset;
+}
+
+.hw-phone--teal {
+  background: linear-gradient(145deg, #214a48 0%, #112625 50%, #091413 100%);
+  box-shadow:
+    0 28px 64px rgba(48, 184, 166, 0.24),
+    0 0 0 1px rgba(48, 184, 166, 0.34) inset;
+}
+
+.hw-phone--blue {
+  background: linear-gradient(145deg, #233c61 0%, #111e33 50%, #090f1b 100%);
+  box-shadow:
+    0 28px 64px rgba(0, 113, 227, 0.24),
+    0 0 0 1px rgba(0, 113, 227, 0.32) inset;
+}
+
+.hw-phone-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 26px;
+  overflow: hidden;
+  background: #FFFFFF;
+  color: #1D1D1F;
+}
+
+.hw-phone--dark .hw-phone-screen {
+  background: #121216;
+  color: #F5F5F7;
+}
+
+.hw-phone-punch {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #0c0c0e;
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.1);
+  z-index: 6;
+}
+
+.hw-phone-glare {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg, rgba(255, 255, 255, 0.24) 0%, transparent 45%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ==========================================================================
+   Section 03 — Atmospheric Product Statement & Floating Glass Specs
+   ========================================================================== */
+.ac-statement-section {
+  padding: 104px 0 100px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 220ms linear;
+}
+
+.ac-statement-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.ac-statement-body {
+  max-width: 620px;
+  margin: 22px auto 0;
+}
+
+.ac-statement-bridge {
+  margin: 42px auto 0;
+  max-width: 720px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px;
+  border-radius: 26px;
+}
+
+.ac-statement-metrics {
+  margin: 18px auto 0;
+  max-width: 720px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ac-metric-glass-tile {
+  padding: 14px 14px;
+  border-radius: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ac-bridge-device {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.ac-bridge-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ac-text-primary);
+}
+
+[data-landing-theme="dark"] .ac-bridge-icon {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #F5F5F7;
+}
+
+.ac-bridge-track {
+  position: relative;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 99px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+[data-landing-theme="dark"] .ac-bridge-track {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.ac-bridge-label {
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ac-text-secondary);
+  letter-spacing: -0.005em;
+}
+
+/* ==========================================================================
+   Section 04 — Interactive Horizontal Liquid Glass Feature Gallery
+   ========================================================================== */
+.ac-features-section {
+  background: linear-gradient(180deg, #E8F0FA 0%, #E6EEF8 100%);
+  padding: 96px 0 104px;
+  position: relative;
+  overflow: hidden;
+  transition: background 320ms ease;
+}
+
+[data-landing-theme="dark"] .ac-features-section {
+  background: linear-gradient(180deg, #070B14 0%, #090E19 100%);
+}
+
+.ac-features-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 26px;
+}
+
+.ac-tabnav-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 28px;
+  padding: 5px;
+  border-radius: 9999px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.58) 0%, rgba(235, 246, 255, 0.4) 100%);
+  backdrop-filter: saturate(230%) blur(26px);
+  -webkit-backdrop-filter: saturate(230%) blur(26px);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  outline: 1px solid rgba(0, 88, 180, 0.1);
+  box-shadow: var(--ac-glass-shadow);
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+[data-landing-theme="dark"] .ac-tabnav-bar {
+  background: var(--ac-glass-bg-dark);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  outline: none;
+  box-shadow: var(--ac-glass-shadow-dark);
+}
+
+.ac-tabnav-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.ac-tabnav-pill {
+  position: relative;
+  height: 34px;
+  padding: 0 16px;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  color: var(--ac-text-secondary);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  z-index: 1;
+  transition: color 180ms ease, transform 140ms var(--ac-ease-out);
+}
+
+.ac-tabnav-pill:hover {
+  color: var(--ac-text-primary);
+}
+
+.ac-tabnav-pill:active {
+  transform: scale(0.97);
+}
+
+.ac-tabnav-pill--active {
+  color: #FFFFFF;
+}
+
+.ac-tabnav-pill-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #2D2D30 0%, #161618 100%);
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  z-index: -1;
+}
+
+[data-landing-theme="dark"] .ac-tabnav-pill--active {
+  color: #1D1D1F;
+}
+
+[data-landing-theme="dark"] .ac-tabnav-pill-bg {
+  background: #F5F5F7;
+}
+
+.ac-carousel-viewport {
+  position: relative;
+  z-index: 2;
+}
+
+.ac-carousel-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: max(24px, calc((100vw - var(--ac-max-width)) / 2 + 24px));
+  padding-left: max(24px, calc((100vw - var(--ac-max-width)) / 2 + 24px));
+  padding-right: max(24px, calc((100vw - var(--ac-max-width)) / 2 + 24px));
+  padding-bottom: 18px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ac-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.ac-feature-card {
+  flex: 0 0 min(740px, 80vw);
+  scroll-snap-align: start;
+  border-radius: 30px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  transition:
+    transform 340ms var(--ac-ease-out),
+    box-shadow 340ms var(--ac-ease-out);
+}
+
+.ac-feature-card-visual {
+  width: 100%;
+  min-height: 310px;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(0, 113, 227, 0.28) 0%, transparent 46%),
+    radial-gradient(circle at 86% 84%, rgba(48, 184, 166, 0.28) 0%, transparent 48%),
+    linear-gradient(145deg, #DCEBFB 0%, #DBF2ED 55%, #E4ECFA 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.88);
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.96);
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+[data-landing-theme="dark"] .ac-feature-card-visual {
+  background:
+    radial-gradient(circle at 14% 20%, rgba(0, 128, 255, 0.26) 0%, transparent 48%),
+    radial-gradient(circle at 86% 84%, rgba(48, 184, 166, 0.24) 0%, transparent 50%),
+    linear-gradient(145deg, #0D1524 0%, #0A181B 55%, #0C121E 100%);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.ac-feature-card-visual-inner {
+  width: 100%;
+  transition: transform 420ms var(--ac-ease-out);
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ac-feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 28px 66px rgba(12, 36, 72, 0.15),
+      inset 0 2px 1px rgba(255, 255, 255, 1),
+      inset 0 -1.5px 2px rgba(0, 113, 227, 0.18);
+  }
+
+  .ac-feature-card:hover .ac-feature-card-visual-inner {
+    transform: scale(1.014);
+  }
+}
+
+.ac-feature-card-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.ac-feature-card-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.ac-control-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  outline: 1px solid rgba(0, 0, 0, 0.08);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.68) 0%, rgba(236, 246, 255, 0.45) 100%);
+  backdrop-filter: saturate(210%) blur(20px);
+  -webkit-backdrop-filter: saturate(210%) blur(20px);
+  color: var(--ac-text-primary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow:
+    0 6px 16px rgba(15, 35, 65, 0.08),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.98);
+  transition:
+    background-color 160ms ease,
+    transform 140ms var(--ac-ease-out);
+}
+
+.ac-control-btn:hover {
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.ac-control-btn:active {
+  transform: scale(0.95);
+}
+
+[data-landing-theme="dark"] .ac-control-btn {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.08) 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.24);
+  outline: none;
+  color: #F5F5F7;
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.25);
+}
+
+.ac-carousel-nav-row {
+  max-width: var(--ac-max-width);
+  margin: 22px auto 0;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.ac-carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 9999px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.66) 0%, rgba(236, 246, 255, 0.44) 100%);
+  backdrop-filter: saturate(210%) blur(20px);
+  -webkit-backdrop-filter: saturate(210%) blur(20px);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  outline: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 8px 22px rgba(15, 35, 65, 0.08),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.98);
+}
+
+[data-landing-theme="dark"] .ac-carousel-dots {
+  background: var(--ac-glass-bg-dark);
+  border-color: rgba(255, 255, 255, 0.22);
+  outline: none;
+}
+
+.ac-carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  border: none;
+  padding: 0;
+  background: #B9C0C9;
+  cursor: pointer;
+  transition: width 260ms var(--ac-ease-out), background-color 240ms ease;
+}
+
+.ac-carousel-dot--active {
+  width: 26px;
+  background: var(--ac-text-primary);
+}
+
+.ac-paddle-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ac-paddle-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  outline: 1px solid rgba(0, 0, 0, 0.08);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.68) 0%, rgba(236, 246, 255, 0.45) 100%);
+  backdrop-filter: saturate(220%) blur(22px);
+  -webkit-backdrop-filter: saturate(220%) blur(22px);
+  color: var(--ac-text-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow:
+    0 10px 26px rgba(15, 35, 65, 0.1),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.98);
+  transition:
+    background-color 160ms ease,
+    opacity 160ms ease,
+    transform 140ms var(--ac-ease-out),
+    box-shadow 180ms ease;
+}
+
+.ac-paddle-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.ac-paddle-btn:active:not(:disabled) {
+  transform: scale(0.93);
+}
+
+.ac-paddle-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+[data-landing-theme="dark"] .ac-paddle-btn {
+  background: var(--ac-glass-bg-dark);
+  border-color: rgba(255, 255, 255, 0.24);
+  outline: none;
+  color: #F5F5F7;
+}
+
+/* ==========================================================================
+   Section 05 — Sticky Scroll Experience (Zero Cutoff on any Laptop/Zoom)
+   ========================================================================== */
+.ac-scroll-exp-outer {
+  position: relative;
+  height: 290vh;
+  background-color: var(--ac-bg-primary);
+  transition: background-color 320ms ease;
+}
+
+/* min-height: 100vh + height: auto + overflow-x: clip prevents clipping on 700px laptops & browser zoom */
+.ac-scroll-exp-sticky {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-x: clip;
+  overflow-y: visible;
+  padding: calc(var(--ac-nav-height) + 12px) 0 28px;
+}
+
+.ac-scroll-exp-header {
+  text-align: center;
+  max-width: 840px;
+  margin: 0 auto 14px;
+}
+
+/* Keep headline sizing fluid with viewport height so bottom controls never push out of frame */
+.ac-scroll-exp-header .ac-section-headline {
+  font-size: clamp(28px, min(4.2vw, 5.2vh), 58px);
+  line-height: 1.05;
+}
+
+.ac-scroll-exp-frame {
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px 28px;
+  border-radius: 30px;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  outline: 1px solid rgba(0, 113, 227, 0.1);
+  box-shadow:
+    0 24px 64px rgba(15, 35, 65, 0.1),
+    inset 0 2px 1px rgba(255, 255, 255, 0.98);
+  overflow: hidden;
+  will-change: transform, background;
+}
+
+[data-landing-theme="dark"] .ac-scroll-exp-frame {
+  border-color: rgba(255, 255, 255, 0.22);
+  outline: 1px solid rgba(48, 184, 166, 0.16);
+  box-shadow: var(--ac-glass-shadow-dark);
+}
+
+.ac-scroll-exp-stage {
+  position: relative;
+  max-width: 920px;
+  width: 100%;
+  margin: 0 auto;
+  min-height: clamp(240px, 36vh, 330px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  z-index: 2;
+}
+
+.ac-scroll-exp-controls-row {
+  margin: 16px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ac-scroll-exp-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ac-scroll-step-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 32px;
+  padding: 0 13px;
+  border-radius: 9999px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ac-text-secondary);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.66) 0%, rgba(235, 245, 255, 0.44) 100%);
+  backdrop-filter: saturate(200%) blur(18px);
+  -webkit-backdrop-filter: saturate(200%) blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  outline: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 12px rgba(15, 35, 65, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.96);
+  cursor: pointer;
+  transition:
+    background-color 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease,
+    transform 140ms var(--ac-ease-out);
+}
+
+.ac-scroll-step-chip:active {
+  transform: scale(0.96);
+}
+
+.ac-scroll-step-chip--active {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1D1D1F;
+  border-color: rgba(0, 113, 227, 0.35);
+  box-shadow:
+    0 6px 18px rgba(0, 113, 227, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+[data-landing-theme="dark"] .ac-scroll-step-chip {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.06) 100%);
+  border-color: rgba(255, 255, 255, 0.22);
+  outline: none;
+  color: #B4B8C2;
+}
+
+[data-landing-theme="dark"] .ac-scroll-step-chip--active {
+  background: rgba(255, 255, 255, 0.22);
+  color: #F5F5F7;
+  border-color: rgba(48, 184, 166, 0.5);
+}
+
+.ac-finish-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.68) 0%, rgba(235, 245, 255, 0.45) 100%);
+  backdrop-filter: saturate(200%) blur(18px);
+  -webkit-backdrop-filter: saturate(200%) blur(18px);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  outline: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.98);
+}
+
+[data-landing-theme="dark"] .ac-finish-switcher {
+  background: var(--ac-glass-bg-dark);
+  border-color: rgba(255, 255, 255, 0.22);
+  outline: none;
+}
+
+.ac-finish-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  padding: 0;
+  transition: transform 160ms var(--ac-ease-out), box-shadow 160ms ease;
+}
+
+.ac-finish-dot--active {
+  transform: scale(1.16);
+  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 3.5px var(--ac-blue);
+}
+
+/* ==========================================================================
+   Section 06 — How It Works (Interactive Liquid Glass Chapters)
+   ========================================================================== */
+.ac-how-section {
+  background: linear-gradient(180deg, #E8EFF8 0%, #EFF3FA 100%);
+  padding: 104px 0 112px;
+  position: relative;
+  overflow: hidden;
+  transition: background 320ms ease;
+}
+
+[data-landing-theme="dark"] .ac-how-section {
+  background: linear-gradient(180deg, #060910 0%, #090E18 100%);
+}
+
+.ac-how-header {
+  max-width: 720px;
+  margin-bottom: 44px;
+}
+
+.ac-how-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.ac-how-stage-row {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 40px;
+  align-items: center;
+  padding: 34px 38px;
+  border-radius: 28px;
+}
+
+.ac-how-step-num {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ac-font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ac-blue);
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background: rgba(0, 113, 227, 0.1);
+  border: 1px solid rgba(0, 113, 227, 0.18);
+}
+
+[data-landing-theme="dark"] .ac-how-step-num {
+  background: rgba(0, 128, 255, 0.16);
+  color: #60B2FF;
+  border-color: rgba(96, 178, 255, 0.3);
+}
+
+.ac-how-step-visual {
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 20% 25%, rgba(0, 113, 227, 0.24) 0%, transparent 48%),
+    radial-gradient(circle at 82% 80%, rgba(48, 184, 166, 0.24) 0%, transparent 50%),
+    linear-gradient(135deg, #DCEBFB 0%, #DCF3EE 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  padding: 24px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-landing-theme="dark"] .ac-how-step-visual {
+  background:
+    radial-gradient(circle at 20% 25%, rgba(0, 128, 255, 0.24) 0%, transparent 50%),
+    radial-gradient(circle at 82% 80%, rgba(48, 184, 166, 0.22) 0%, transparent 52%),
+    linear-gradient(135deg, #0D1626 0%, #0A181C 100%);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* ==========================================================================
+   Section 07 — Full-Width Dark Privacy Section (#000000)
+   ========================================================================== */
+.ac-privacy-section {
+  background-color: var(--ac-dark-bg);
+  color: var(--ac-dark-text);
+  padding: 116px 0 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ac-privacy-seam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 110px;
+  background: linear-gradient(180deg, rgba(244, 246, 250, 0.08) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.ac-privacy-ambient {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 113, 227, 0.28) 0%,
+    rgba(48, 184, 166, 0.22) 44%,
+    transparent 74%
+  );
+  pointer-events: none;
+}
+
+.ac-privacy-header {
+  position: relative;
+  z-index: 2;
+  max-width: 740px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ac-privacy-header .ac-section-headline {
+  color: var(--ac-dark-text);
+}
+
+.ac-privacy-header .ac-intro-copy {
+  color: #A1A1A6;
+  margin-top: 20px;
+}
+
+.ac-privacy-visual {
+  position: relative;
+  z-index: 2;
+  margin: 52px auto 36px;
+  max-width: 920px;
+  padding: 40px 32px;
+  border-radius: 28px;
+}
+
+.ac-privacy-pillars {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.ac-privacy-pillar-card {
+  padding: 24px 22px;
+  border-radius: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ac-privacy-pillar-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #F5F5F7;
+}
+
+.ac-privacy-pillar-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #A1A1A6;
+  margin: 0;
+}
+
+.ac-privacy-spec-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 26px;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.06) 100%);
+  backdrop-filter: saturate(200%) blur(22px);
+  -webkit-backdrop-filter: saturate(200%) blur(22px);
+  border: 1.5px solid rgba(255, 255, 255, 0.26);
+  color: #F5F5F7;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.4),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.3);
+  transition: background-color 160ms ease, transform 140ms var(--ac-ease-out);
+}
+
+.ac-privacy-spec-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.ac-privacy-spec-btn:active {
+  transform: scale(0.96);
+}
+
+/* Liquid Glass Modal Surface */
+.ac-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  background: rgba(0, 0, 0, 0.62);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.ac-modal-glass {
+  width: 100%;
+  max-width: 560px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgba(36, 40, 48, 0.86) 0%, rgba(18, 20, 25, 0.82) 100%);
+  backdrop-filter: saturate(220%) blur(34px);
+  -webkit-backdrop-filter: saturate(220%) blur(34px);
+  border: 1.5px solid rgba(255, 255, 255, 0.26);
+  box-shadow:
+    0 34px 86px rgba(0, 0, 0, 0.72),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.34);
+  color: #F5F5F7;
+  padding: 28px;
+  position: relative;
+}
+
+/* ==========================================================================
+   Section 08 — Framed Liquid Glass Final CTA & Section 09 — Footer
+   ========================================================================== */
+.ac-final-cta-section {
+  background: linear-gradient(180deg, #F0F5FC 0%, #E7EFFA 100%);
+  padding: 100px 0 104px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: background 320ms ease;
+}
+
+[data-landing-theme="dark"] .ac-final-cta-section {
+  background: linear-gradient(180deg, #060910 0%, #090E18 100%);
+}
+
+.ac-final-cta-card {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 54px 40px;
+  border-radius: 34px;
+  position: relative;
+  z-index: 2;
+}
+
+.ac-cta-ecosystem-pills {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ac-footer {
+  background-color: var(--ac-bg-primary);
+  border-top: 1px solid var(--ac-border);
+  padding: 36px 0 40px;
+  color: var(--ac-text-secondary);
+  font-size: 12.5px;
+  transition: background-color 320ms ease, color 280ms ease;
+}
+
+.ac-footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--ac-border-subtle);
+}
+
+.ac-footer-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.ac-footer-link {
+  color: var(--ac-text-secondary);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 160ms ease;
+}
+
+.ac-footer-link:hover {
+  color: var(--ac-text-primary);
+}
+
+.ac-footer-bottom {
+  padding-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: var(--ac-text-tertiary);
+  font-size: 12px;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints (Laptop height, Tablet & Mobile)
+   ========================================================================== */
+@media (max-height: 780px) and (min-width: 769px) {
+  .ac-scroll-exp-sticky {
+    padding-top: calc(var(--ac-nav-height) + 6px);
+    padding-bottom: 18px;
+  }
+
+  .ac-scroll-exp-header {
+    margin-bottom: 10px;
+  }
+
+  .ac-scroll-exp-frame {
+    padding: 14px 22px;
+  }
+
+  .ac-scroll-exp-controls-row {
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 1120px) {
+  .ac-hero-floating-hud,
+  .ac-hero-floating-stat {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .ac-hero-stage {
+    margin: 28px auto;
+  }
+
+  .hw-laptop {
+    width: 470px;
+  }
+
+  .hw-phone {
+    width: 164px;
+    border-radius: 26px;
+    padding: 6px;
+  }
+
+  .hw-phone-screen {
+    border-radius: 20px;
+  }
+
+  .ac-statement-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ac-how-stage-row {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ac-nav {
+    padding: 0 12px;
+  }
+
+  .ac-nav--scrolled .ac-nav-inner {
+    padding: 0 12px 0 16px;
+  }
+
+  .ac-nav-links {
+    display: none;
+  }
+
+  .ac-nav-mobile-toggle {
+    display: inline-flex;
+  }
+
+  .ac-hero-section {
+    padding-top: calc(var(--ac-nav-height) + 28px);
+    padding-bottom: 58px;
+  }
+
+  .ac-hero-stage-plate {
+    inset: 8px 0 14px;
+    border-radius: 24px;
+  }
+
+  .ac-hero-laptop-screen {
+    padding: 8px 10px;
+  }
+
+  .ac-hero-laptop-topbar {
+    margin-bottom: 6px;
+  }
+
+  .ac-hero-laptop-dots {
+    display: none;
+  }
+
+  .ac-hero-laptop-brand {
+    margin-left: 0 !important;
+    font-size: 10.5px !important;
+  }
+
+  .ac-hero-laptop-pill {
+    font-size: 9px;
+    padding: 2px 7px;
+  }
+
+  .ac-hero-laptop-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .ac-hero-laptop-transfer {
+    padding: 7px 9px;
+    gap: 5px;
+  }
+
+  .ac-hero-laptop-filecard {
+    padding: 5px 8px !important;
+  }
+
+  .ac-hero-laptop-sub {
+    display: none;
+  }
+
+  .ac-hero-laptop-sidebar {
+    display: none !important;
+  }
+
+  .ac-hero-composition {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0 24px;
+  }
+
+  .ac-hero-arc-desktop {
+    display: none;
+  }
+
+  .ac-hero-arc-mobile {
+    display: flex;
+  }
+
+  .hw-laptop {
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .hw-laptop-lid {
+    aspect-ratio: 16 / 11.4;
+    padding: 8px 8px 10px;
+  }
+
+  .hw-phone {
+    width: 148px;
+    border-radius: 24px;
+  }
+
+  .ac-card-transfer-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .ac-card-stream-track {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .ac-card-three-col-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .ac-privacy-devices {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ac-privacy-beam {
+    width: 28px;
+    height: 44px;
+  }
+
+  .ac-privacy-beam-line {
+    width: 1.5px;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 113, 227, 0.35), rgba(48, 184, 166, 0.9), rgba(0, 113, 227, 0.35));
+  }
+
+  .ac-statement-section {
+    padding: 76px 0 72px;
+  }
+
+  .ac-statement-bridge {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .ac-bridge-device {
+    justify-content: center;
+  }
+
+  .ac-features-section {
+    padding: 76px 0 80px;
+  }
+
+  .ac-features-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ac-feature-card {
+    flex: 0 0 88vw;
+    padding: 22px;
+    border-radius: 24px;
+  }
+
+  .ac-feature-card-visual {
+    min-height: 260px;
+    padding: 16px;
+  }
+
+  .ac-feature-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* On mobile, flatten sticky scroll into clean interactive vertical layout */
+  .ac-scroll-exp-outer {
+    height: auto;
+    padding: 72px 0;
+  }
+
+  .ac-scroll-exp-sticky {
+    position: relative;
+    min-height: auto;
+    height: auto;
+    padding: 0;
+  }
+
+  .ac-scroll-exp-frame {
+    padding: 20px 14px;
+    border-radius: 24px;
+  }
+
+  .ac-scroll-exp-stage {
+    flex-direction: column;
+    gap: 20px;
+    min-height: auto;
+  }
+
+  .ac-how-section {
+    padding: 76px 0 84px;
+  }
+
+  .ac-how-stage-row {
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .ac-privacy-section {
+    padding: 80px 0;
+  }
+
+  .ac-privacy-visual {
+    padding: 24px 16px;
+    margin: 38px auto 28px;
+  }
+
+  .ac-privacy-pillars {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .ac-final-cta-section {
+    padding: 76px 0;
+  }
+
+  .ac-final-cta-card {
+    padding: 38px 22px;
+    border-radius: 26px;
+  }
+}
+
+@media (max-width: 540px) {
+  .ac-statement-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .ac-how-pair-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ac-how-arrow-badge {
+    align-self: center;
+    transform: rotate(90deg);
+  }
+}
+
+/* ==========================================================================
+   Accessibility: Reduced Motion, Reduced Transparency & High Contrast
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .ac-scroll-exp-outer {
+    height: auto;
+    padding: 88px 0;
+  }
+
+  .ac-scroll-exp-sticky {
+    position: relative;
+    min-height: auto;
+    height: auto;
+    padding: 0;
+  }
+
+  .ac-glass-interactive::after {
+    display: none !important;
+  }
+
+  .ac-feature-card,
+  .ac-feature-card-visual-inner,
+  .ac-btn-primary,
+  .ac-btn-secondary,
+  .ac-nav-cta,
+  .hw-laptop-lid,
+  .hw-laptop-base,
+  .hw-phone {
+    transition: opacity 150ms ease, background-color 150ms ease !important;
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .ac-glass,
+  .ac-glass-pill,
+  .ac-nav--scrolled .ac-nav-inner,
+  .ac-nav-drawer,
+  .ac-tabnav-bar,
+  .ac-feature-card,
+  .ac-control-btn,
+  .ac-paddle-btn,
+  .ac-carousel-dots,
+  .ac-hero-floating-hud,
+  .ac-hero-floating-stat {
+    background: #FFFFFF !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  [data-landing-theme="dark"] .ac-glass,
+  [data-landing-theme="dark"] .ac-glass-pill,
+  .ac-glass--dark,
+  .ac-nav--dark .ac-nav-inner,
+  .ac-nav--dark .ac-nav-drawer,
+  .ac-privacy-visual,
+  .ac-modal-glass {
+    background: #161618 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .ac-glass,
+  .ac-nav--scrolled .ac-nav-inner,
+  .ac-feature-card {
+    outline-color: rgba(0, 0, 0, 0.35) !important;
+    border-color: rgba(0, 0, 0, 0.35) !important;
+  }
+}

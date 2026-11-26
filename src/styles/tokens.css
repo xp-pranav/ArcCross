@@ -1,0 +1,185 @@
+:root {
+  /* macOS & Onlines 8pt Grid & Micro-Spacing */
+  --space-0-5: 2px;
+  --space-1: 4px;
+  --space-1-5: 6px;
+  --space-2: 8px;
+  --space-2-5: 10px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* Precise Corner Radii */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-control: 8px;
+  --radius-card: 10px;
+  --radius-window: 14px;
+  --radius-sheet: 16px;
+  --radius-full: 9999px;
+
+  /* Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter Display", system-ui, sans-serif;
+  --font-mono: "SF Mono", "JetBrains Mono", ui-monospace, Menlo, Monaco, Consolas, monospace;
+
+  /* Apple & Onlines Text Scale */
+  --text-2xs: 0.6875rem; /* 11px */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.8125rem;  /* 13px */
+  --text-base: 0.875rem; /* 14px */
+  --text-md: 0.9375rem;  /* 15px */
+  --text-lg: 1.0625rem;  /* 17px */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.5rem;    /* 24px */
+  --text-3xl: 1.75rem;   /* 28px */
+
+  /* Timing & Easing */
+  --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-instant: 100ms;
+  --duration-fast: 160ms;
+  --duration-normal: 240ms;
+  --duration-slow: 340ms;
+
+  /* Z-Index Hierarchy */
+  --z-base: 1;
+  --z-sidebar: 20;
+  --z-header: 30;
+  --z-dropdown: 60;
+  --z-sheet-backdrop: 100;
+  --z-sheet: 110;
+  --z-toast: 200;
+}
+
+/* Light Theme — Exact onlines.com.ar Color Palette */
+[data-theme="light"] {
+  --color-window-bg: #EAE8DE;
+  --color-canvas: #F2F1E8;                 /* Exact Onlines warm halftone cream canvas */
+  --color-surface: #FFFFFF;                /* White cards / surfaces */
+  --color-surface-hover: #F8F8F5;
+  --color-elevated: #F5F5F7;               /* Onlines custom-gris-claro */
+  --color-elevated-hover: #ECECEF;
+  
+  --color-sidebar-bg: rgba(242, 241, 232, 0.92);
+  --color-toolbar-bg: rgba(242, 241, 232, 0.88);
+  --color-sheet-bg: #FFFFFF;
+
+  /* Onlines Semantic Label Colors */
+  --color-text-primary: #1D1D1F;           /* Onlines custom-titulos */
+  --color-text-secondary: #424242;         /* Onlines custom-texto-corrido */
+  --color-text-tertiary: #666666;          /* Onlines secundario */
+  --color-text-muted: rgba(29, 29, 31, 0.4); /* Onlines subtle caption */
+
+  /* Onlines Electric Blue & Figma Turquesa Accent Colors */
+  --color-deep-blue: #0859D4;              /* Onlines custom-azul */
+  --color-deep-blue-hover: #1A59F9;        /* Onlines custom-azul-hover */
+  --color-deep-blue-subtle: rgba(8, 89, 212, 0.08);
+
+  --color-teal: #00B5CE;                  /* Onlines custom-figma-turquesa */
+  --color-teal-hover: #009BB0;
+  --color-teal-subtle: rgba(0, 181, 206, 0.12);
+  --color-teal-contrast: #FFFFFF;
+
+  /* Onlines Additional Palette Accents */
+  --color-figma-green: #1BC47D;           /* Onlines custom-figma-verde */
+  --color-figma-sky: #18A0FB;             /* Onlines custom-figma-celeste */
+  --color-figma-violet: #6465ED;          /* Onlines custom-figma-violeta */
+  --color-figma-pink: #EE46D3;            /* Onlines custom-figma-rosa */
+  --color-figma-orange: #EF5533;          /* Onlines custom-figma-naranja */
+  --color-figma-yellow: #FFC700;          /* Onlines custom-figma-amarillo */
+
+  /* Onlines Hairline Borders & Dashes */
+  --color-border: rgba(29, 29, 31, 0.16); /* Onlines border */
+  --color-border-subtle: rgba(29, 29, 31, 0.08);
+  --color-separator: rgba(29, 29, 31, 0.12);
+  --color-border-dashed: rgba(0, 0, 0, 0.08);
+  --color-border-focus: #0859D4;
+
+  /* Onlines Dot Matrix Pattern */
+  --puntos-color: rgba(0, 0, 0, 0.2);
+  --puntos-color-lit: rgba(0, 0, 0, 0.44);
+
+  /* Semantic Colors */
+  --color-warning: #EF5533;               /* Onlines figma-naranja */
+  --color-warning-subtle: rgba(239, 85, 51, 0.12);
+  --color-error: #CF2E2E;                 /* Onlines vivid-red */
+  --color-error-subtle: rgba(207, 46, 46, 0.1);
+  --color-success: #1BC47D;               /* Onlines figma-verde */
+  --color-success-subtle: rgba(27, 196, 125, 0.12);
+
+  /* Shadows */
+  --shadow-subtle: 0 0.5px 1.5px rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 0 0.5px rgba(0, 0, 0, 0.08);
+  --shadow-window: 0 24px 60px -12px rgba(0, 0, 0, 0.14), 0 0 1px rgba(0, 0, 0, 0.12);
+  --shadow-sheet: 0 20px 48px -8px rgba(0, 0, 0, 0.22), 0 0 1px rgba(0, 0, 0, 0.16);
+
+  --backdrop-blur: blur(25px) saturate(190%);
+}
+
+/* Dark Theme — Exact onlines.com.ar Pitch Black Palette */
+[data-theme="dark"] {
+  --color-window-bg: #0A0A0A;
+  --color-canvas: #010101;                 /* Exact Onlines pitch black */
+  --color-surface: #121214;                /* Dark card surface */
+  --color-surface-hover: #1A1A1D;
+  --color-elevated: #1D1D1F;               /* Onlines dark elevated */
+  --color-elevated-hover: #26262A;
+  
+  --color-sidebar-bg: rgba(18, 18, 20, 0.88);
+  --color-toolbar-bg: rgba(18, 18, 20, 0.85);
+  --color-sheet-bg: #121214;
+
+  /* Onlines Semantic Dark Labels */
+  --color-text-primary: #FFFFFF;           /* Onlines alternativo white */
+  --color-text-secondary: #ABB8C3;         /* Onlines cyan-bluish-gray */
+  --color-text-tertiary: #888888;
+  --color-text-muted: #555555;
+
+  /* Brand Colors */
+  --color-deep-blue: #18A0FB;              /* Onlines vibrant celeste / electric blue */
+  --color-deep-blue-hover: #40B1FF;
+  --color-deep-blue-subtle: rgba(24, 160, 251, 0.15);
+
+  --color-teal: #00B5CE;                  /* Onlines custom-figma-turquesa */
+  --color-teal-hover: #21D4ED;
+  --color-teal-subtle: rgba(0, 181, 206, 0.18);
+  --color-teal-contrast: #010101;
+
+  /* Additional Palette Accents */
+  --color-figma-green: #1BC47D;
+  --color-figma-sky: #18A0FB;
+  --color-figma-violet: #6465ED;
+  --color-figma-rosa: #EE46D3;
+  --color-figma-orange: #EF5533;
+  --color-figma-yellow: #FFC700;
+
+  /* Hairline Borders */
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+  --color-separator: rgba(255, 255, 255, 0.08);
+  --color-border-dashed: rgba(255, 255, 255, 0.1);
+  --color-border-focus: #18A0FB;
+
+  /* Onlines Dot Matrix Pattern (Dark) */
+  --puntos-color: rgba(255, 255, 255, 0.15);
+  --puntos-color-lit: rgba(255, 255, 255, 0.35);
+
+  /* Semantic Colors */
+  --color-warning: #FFC700;
+  --color-warning-subtle: rgba(255, 199, 0, 0.15);
+  --color-error: #FF453A;
+  --color-error-subtle: rgba(255, 69, 58, 0.15);
+  --color-success: #1BC47D;
+  --color-success-subtle: rgba(27, 196, 125, 0.18);
+
+  /* Shadows */
+  --shadow-subtle: 0 0.5px 1.5px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.5), 0 0 0.5px rgba(255, 255, 255, 0.08) inset;
+  --shadow-window: 0 28px 70px -12px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.12) inset;
+  --shadow-sheet: 0 24px 56px -8px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.15) inset;
+
+  --backdrop-blur: blur(25px) saturate(200%);
+}
